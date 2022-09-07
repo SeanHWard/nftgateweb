@@ -5,9 +5,9 @@ import { domainName } from "../const/yourDetails";
 import "../styles/globals.css";
 
 // Added for navigation
-import { Text, Voew } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+//import { Text, View } from 'react-native';
+//import { NavigationContainer } from '@react-navigation/native';
+//import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 // This is the chainId your dApp will work on.
 const activeChainId = ChainId.Goerli;
