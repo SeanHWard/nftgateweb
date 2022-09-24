@@ -5,22 +5,35 @@ import { getUser } from "../auth.config";
 import checkBalance from "../util/checkBalance";
 import styles from "../styles/Home.module.css";
 
+import { BrowserRouter } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
+
+import Navbar from '../components/Navbar';
+import NavbarAuth from '../components/NavbarAuth';
+
+
 export default function Home() {
   const logout = useLogout();
 
   return (
-    <div className={styles.container}>
-      <h1 className={styles.h1}>Restricted Access Page</h1>
-      <p className={styles.explain}>
-        Thanks for being a member of our NFT community!
-      </p>
+    <div>
+      <NavbarAuth></NavbarAuth>
+      <div className={styles.container}>
+        
+        <h1 className={styles.h1}>Restricted Access Page</h1>
+        <p className={styles.explain}>
+          Thanks for being a member of our NFT community!
+        </p>
 
-      <button className={styles.mainButton} onClick={logout}>
-        Logout
-      </button>
+        <button className={styles.mainButton} onClick={logout}>
+          Logout
+        </button>
+      </div>
     </div>
   );
 }
+
+
 
 // This gets called on every request
 export async function getServerSideProps(context) {
@@ -60,6 +73,10 @@ export async function getServerSideProps(context) {
       },
     };
   }
+
+  // User is fully authenticated here...
+
+
 
   // Finally, return the props
   return {

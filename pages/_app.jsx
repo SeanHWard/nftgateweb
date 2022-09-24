@@ -1,13 +1,10 @@
 import { ChainId, ThirdwebProvider } from "@thirdweb-dev/react";
 import Head from "next/head";
-import ThirdwebGuideFooter from "../components/ThirdwebGuideFooter";
 import { domainName } from "../const/yourDetails";
 import "../styles/globals.css";
 
-// Added for navigation
-//import { Text, View } from 'react-native';
-//import { NavigationContainer } from '@react-navigation/native';
-//import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Navbar from '../components/Navbar';
+import { BrowserRouter } from "react-router-dom";
 
 // This is the chainId your dApp will work on.
 const activeChainId = ChainId.Goerli;
@@ -30,8 +27,12 @@ function MyApp({ Component, pageProps }) {
           content="Learn how to use the thirdweb Auth SDK to create an NFT Gated Website"
         />
       </Head>
+      <>
+      
+      {/* <Navbar></Navbar>   */}
+      
       <Component {...pageProps} />
-      <ThirdwebGuideFooter />
+      </>
     </ThirdwebProvider>
   );
 }
