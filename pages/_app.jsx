@@ -6,6 +6,8 @@ import "../styles/globals.css";
 import Navbar from '../components/Navbar';
 import { BrowserRouter } from "react-router-dom";
 
+import { TwitterTimelineEmbed, TwitterShareButton, TwitterFollowButton, TwitterTweetEmbed } from 'react-twitter-embed';
+
 // This is the chainId your dApp will work on.
 const activeChainId = ChainId.Goerli;
 
@@ -20,7 +22,7 @@ function MyApp({ Component, pageProps }) {
       }}
     >
       <Head>
-        <title>NFT Gated Website</title>
+        <title>Ward's NFT Gated Website</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
           name="description"
@@ -28,9 +30,6 @@ function MyApp({ Component, pageProps }) {
         />
       </Head>
       <>
-      
-      {/* <Navbar></Navbar>   */}
-      
       <Component {...pageProps} />
       </>
     </ThirdwebProvider>

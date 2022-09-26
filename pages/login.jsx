@@ -7,6 +7,7 @@ import {
   useNetworkMismatch,
   useUser,
   useLogin,
+  ConnectWallet
 } from "@thirdweb-dev/react";
 
 import { contractAddress } from "../const/yourDetails";
@@ -14,10 +15,12 @@ import { contractAddress } from "../const/yourDetails";
 import { ChainId } from "@thirdweb-dev/sdk";
 import styles from "../styles/Home.module.css";
 
+import Navbar from '../components/Navbar';
+
 export default function Login() {
   // Wallet & Network Information
   const address = useAddress();
-  const connectWithMetamask = useMetamask();
+  //const connectWithMetamask = useMetamask();
 
   // Hooks to ensure user is on the right network
   const [, switchNetwork] = useNetwork();
@@ -37,75 +40,68 @@ export default function Login() {
   const { user } = useUser(); // Get current user (unused on this page)
 
   return (
-    <div className={styles.container}>
-      <h1 className={styles.h1}>Auth - NFT Gated Content</h1>
-      <p className={styles.explain}>
-        Serve exclusive content to users who own an NFT from your collection,
-        using{" "}
-        <b>
-          <a
-            href="https://portal.thirdweb.com/building-web3-apps/authenticating-users"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.purple}
-          >
-            Auth
-          </a>
-        </b>
-        !
-      </p>
+    <div>
+      <Navbar></Navbar>
+      
+      <div className={styles.container}>
+        <h1 className={styles.h1}>Auth - NFT Gated Content</h1>
+        <p className={styles.explain}>
+          Serve exclusive content to users who own an NFT from your collection here!
+        </p>
 
-      <p className={styles.explain}>
-        You cannot access the main page unless you own an NFT from our
-        collection!
-      </p>
+        <p className={styles.explain}>
+          You cannot access the main page unless you own an NFT from our
+          collection!
+        </p>
 
-      <hr className={styles.divider} />
+        <hr className={styles.divider} />
 
-      {address ? (
-        <>
-          <p>Welcome, {address.slice(0, 6)}...</p>
+        {address ? (
+          <>
+            <p>Welcome, {address.slice(0, 6)}...</p>
 
-          <button
-            className={styles.mainButton}
-            style={{ width: 256 }}
-            onClick={login}
-          >
-            Sign In
-          </button>
+            {/* <button
+              className={styles.mainButton}
+              style={{ width: 256 }}
+              onClick={login}
+            >
+              Sign In
+            </button> */}
 
-          <p>
-            For demo purposes, you can claim an NFT from our collection below:
-          </p>
+            <p>
+              For demo purposes, you can claim an NFT from our collection below:
+            </p>
 
-          <button
-            className={styles.secondaryButton}
-            onClick={() => {
-              if (networkMismatch) {
-                switchNetwork(ChainId.Goerli);
-                return;
-              }
-              claimNft({
-                quantity: 1,
-                tokenId: 0,
-                to: address,
-              });
-            }}
-          >
-            {!isClaiming ? " Claim An NFT" : "Claiming..."}
-          </button>
-        </>
-      ) : (
-        <>
-          <button
-            className={styles.mainButton}
-            style={{ width: "fit-content", paddingRight: 16, paddingLeft: 16 }}
-            onClick={() => connectWithMetamask()}
-          >
-            Connect Wallet
-          </button>
-        </>
-      )}
+            <button
+              className={styles.secondaryButton}
+              onClick={() => {
+                if (networkMismatch) {
+                  switchNetwork(ChainId.Goerli);
+                  return;
+                }
+                claimNft({
+                  quantity: 1,
+                  tokenId: 0,
+                  to: address,
+                });
+              }}
+            >
+              {!isClaiming ? " Claim An NFT" : "Claiming..."}
+            </button>
+          </>
+        ) : (
+          <>
+          {/* <ConnectWallet colorMode="light"></ConnectWallet>
+            <button
+              className={styles.mainButton}
+              style={{ width: "fit-content", paddingRight: 16, paddingLeft: 16 }}
+              onClick={() => connectWithMetamask()}
+            >
+              Connect Wallet
+            </button> */}
+          </>
+        )}
+      </div>
     </div>
   );
 }

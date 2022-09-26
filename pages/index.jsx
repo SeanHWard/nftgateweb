@@ -1,6 +1,6 @@
 import React from "react";
 import { ThirdwebSDK } from "@thirdweb-dev/sdk";
-import { useLogout } from "@thirdweb-dev/react";
+import { useLogout, ConnectWallet } from "@thirdweb-dev/react";
 import { getUser } from "../auth.config";
 import checkBalance from "../util/checkBalance";
 import styles from "../styles/Home.module.css";
@@ -11,6 +11,7 @@ import { Route, Routes } from "react-router-dom";
 import Navbar from '../components/Navbar';
 import NavbarAuth from '../components/NavbarAuth';
 
+import { TwitterTimelineEmbed, TwitterShareButton, TwitterFollowButton, TwitterTweetEmbed } from 'react-twitter-embed';
 
 export default function Home() {
   const logout = useLogout();
@@ -18,13 +19,17 @@ export default function Home() {
   return (
     <div>
       <NavbarAuth></NavbarAuth>
+      <TwitterTimelineEmbed
+        sourceType="profile"
+        screenName="weansard"
+        options={{height: 400, width: 400}}
+      />
       <div className={styles.container}>
         
         <h1 className={styles.h1}>Restricted Access Page</h1>
         <p className={styles.explain}>
           Thanks for being a member of our NFT community!
         </p>
-
         <button className={styles.mainButton} onClick={logout}>
           Logout
         </button>

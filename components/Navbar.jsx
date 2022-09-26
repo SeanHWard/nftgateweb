@@ -1,5 +1,6 @@
 import styles from "../styles/Home.module.css";
 import Link from 'next/Link';
+import { ConnectWallet } from '@thirdweb-dev/react';
 
 export default function Navbar() {
   return ( 
@@ -11,6 +12,9 @@ export default function Navbar() {
         </li>
         <li>
           <Link href="/About">About</Link>
+        </li>
+        <li>
+          <ConnectWallet colorMode="light" accentColor="#555"></ConnectWallet>
         </li>
       </ul>
     </nav>
