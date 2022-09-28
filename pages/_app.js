@@ -22,7 +22,7 @@ function MyApp({ Component, pageProps }) {
       }}
     >
       <Head>
-        <title>Ward's NFT Gated Website</title>
+        <title>Wards NFT Gated Website</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
           name="description"
