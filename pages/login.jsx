@@ -1,14 +1,4 @@
-import {
-  useAddress,
-  useMetamask,
-  useEditionDrop,
-  useClaimNFT,
-  useNetwork,
-  useNetworkMismatch,
-  useUser,
-  useLogin,
-  ConnectWallet
-} from "@thirdweb-dev/react";
+import { useAddress, useMetamask, useEditionDrop, useClaimNFT, useNetwork, useNetworkMismatch, useUser, useLogin, ConnectWallet} from "@thirdweb-dev/react";
 
 import { contractAddress } from "../const/yourDetails";
 
@@ -23,17 +13,17 @@ export default function Login() {
   //const connectWithMetamask = useMetamask();
 
   // Hooks to ensure user is on the right network
-  const [, switchNetwork] = useNetwork();
-  const networkMismatch = useNetworkMismatch();
+  // const [, switchNetwork] = useNetwork();
+  // const networkMismatch = useNetworkMismatch();
 
   // For user to claim an NFT to then view the restricted content
-  const editionDropContract = useEditionDrop(
-    contractAddress // replace this with your contract address
-  );
+  // const editionDropContract = useEditionDrop(
+  //   contractAddress // replace this with your contract address
+  // );
 
   // Hook to claim NFTs from the NFT drop (to allow users to claim and *then* view the restricted content)
-  const { mutate: claimNft, isLoading: isClaiming } =
-    useClaimNFT(editionDropContract);
+  // const { mutate: claimNft, isLoading: isClaiming } =
+  //   useClaimNFT(editionDropContract);
 
   // Hooks to sign in with ethereum (auth SDK)
   const login = useLogin(); // Sign in
@@ -68,11 +58,11 @@ export default function Login() {
               Sign In
             </button> */}
 
-            <p>
+            {/* <p>
               For demo purposes, you can claim an NFT from our collection below:
-            </p>
+            </p> */}
 
-            <button
+            {/* <button
               className={styles.secondaryButton}
               onClick={() => {
                 if (networkMismatch) {
@@ -87,7 +77,7 @@ export default function Login() {
               }}
             >
               {!isClaiming ? " Claim An NFT" : "Claiming..."}
-            </button>
+            </button> */}
           </>
         ) : (
           <>

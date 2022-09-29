@@ -5,9 +5,6 @@ import { getUser } from "../auth.config";
 import checkBalance from "../util/checkBalance";
 import styles from "../styles/Home.module.css";
 
-import { BrowserRouter } from "react-router-dom";
-import { Route, Routes } from "react-router-dom";
-
 import Navbar from '../components/Navbar';
 import NavbarAuth from '../components/NavbarAuth';
 
@@ -19,25 +16,16 @@ export default function Home() {
   return (
     <div>
       <NavbarAuth></NavbarAuth>
-      <TwitterTimelineEmbed
-        sourceType="profile"
-        screenName="weansard"
-        options={{height: 400, width: 400}}
-      />
       <div className={styles.container}>
-        
         <h1 className={styles.h1}>Restricted Access Page</h1>
         <p className={styles.explain}>
           Thanks for being a member of our NFT community!
         </p>
-        <button className={styles.mainButton} onClick={logout}>
-          Logout
-        </button>
+        <button className={styles.mainButton} onClick={logout}>Logout</button>
       </div>
     </div>
   );
 }
-
 
 
 // This gets called on every request
@@ -60,10 +48,7 @@ export async function getServerSideProps(context) {
   }
 
   // Instantiate our SDK
-  const sdk = ThirdwebSDK.fromPrivateKey(
-    process.env.THIRDWEB_AUTH_PRIVATE_KEY,
-    "goerli"
-  );
+  const sdk = ThirdwebSDK.fromPrivateKey(process.env.THIRDWEB_AUTH_PRIVATE_KEY, "goerli");
 
   // Check to see if the user has an NFT
   const hasNft = await checkBalance(sdk, user.address);
